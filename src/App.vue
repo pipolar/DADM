@@ -19,18 +19,26 @@ const iceCreamFlavors = ref([]);
     {{ header }}
   </h1>
   <h1>
-    <input type="text" placeholder="Add Item" v-model.trim="newItem">
-    <!-- Radio Buttons -->
-     <!-- (label>input:radio[v-model="newItemPrioriy"]{$})*2 -->
-     <label>
-    <input type="checkbox" v-model="newItemHighPriority">
-    High Priority
+    <!-- Agrupando en un div las entradas -->
+  <form v-on:submit.prevent="items.push({ id: items.length + 1, label: newItem })" class="add-item fomr">
+    <!-- entrada de texto -->
+    <input
+      v-model.trim="newItem"
+      type="text"
+      placeholder="Add Item"
+    />
+    <!-- Caja de seleccion de prioridad -->
+    <label>
+      <input type="checkbox" v-model="newItemHighPriority" />
+      High Priority
     </label>
-    <button 
-  class="btn btn-primary" 
-  v-on:click="items.push({id: items.length + 1, label: newItem})">
-  Salvar Articulo
-</button>
+    <!-- Boton -->
+    <button
+      class="btn btn-primary"
+    >
+      Save Item
+    </button>
+  </form>
   </h1>
   <ul>
     <li v-for="item in items" :key="id"> ⭐ {{ item.label }} </li>
