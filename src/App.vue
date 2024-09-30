@@ -26,22 +26,11 @@ const iceCreamFlavors = ref([]);
     <input type="checkbox" v-model="newItemHighPriority">
     High Priority
     </label>
-    <!-- Helados -->
-    <label>
-      <input type="checkbox" v-model="iceCreamFlavors" value="vanilla">
-      Vanilla
-    </label>
-    <label>
-      <input type="checkbox" v-model="iceCreamFlavors" value="chocolate">
-      Chocolate
-    </label>
-    <label>
-      <input type="checkbox" v-model="iceCreamFlavors" value="strawnerry">
-      Strawberry
-    </label>
-    <p>
-      {{iceCreamFlavors}}
-    </p>
+    <button 
+  class="btn btn-primary" 
+  v-on:click="items.push({id: items.length + 1, label: newItem})">
+  Salvar Articulo
+</button>
   </h1>
   <ul>
     <li v-for="item in items" :key="id"> ⭐ {{ item.label }} </li>
