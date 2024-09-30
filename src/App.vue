@@ -10,6 +10,7 @@ const items = ref([
 ]);
 const newItem = ref('');
 const newItemHighPriority = ref(false);
+const iceCreamFlavors = ref([]);
 </script>
 
 <template>
@@ -21,11 +22,26 @@ const newItemHighPriority = ref(false);
     <input type="text" placeholder="Add Item" v-model.trim="newItem">
     <!-- Radio Buttons -->
      <!-- (label>input:radio[v-model="newItemPrioriy"]{$})*2 -->
-     <label><input type="checkbox" v-model="newItemHighPriority">Alta Prioridad</label>
-     <p>
-      {{ newItemHighPriority }}
+     <label>
+    <input type="checkbox" v-model="newItemHighPriority">
+    High Priority
+    </label>
+    <!-- Helados -->
+    <label>
+      <input type="checkbox" v-model="iceCreamFlavors" value="vanilla">
+      Vanilla
+    </label>
+    <label>
+      <input type="checkbox" v-model="iceCreamFlavors" value="chocolate">
+      Chocolate
+    </label>
+    <label>
+      <input type="checkbox" v-model="iceCreamFlavors" value="strawnerry">
+      Strawberry
+    </label>
+    <p>
+      {{iceCreamFlavors}}
     </p>
-      
   </h1>
   <ul>
     <li v-for="item in items" :key="id"> ⭐ {{ item.label }} </li>
