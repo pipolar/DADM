@@ -29,6 +29,7 @@ const newItemPriority = ref('low');
     </label>
     {{ newItemPriority == 'low' ? '🧊' : '🔥' }}
   </h1>
+  <p>{{ newItemPriority }}</p>
   <ul>
     <li v-for="item in items" :key="id"> ⭐ {{ item.label }} </li>
   </ul>
