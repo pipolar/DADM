@@ -10,25 +10,40 @@ const items = ref([
   { id: '1', label: 'pepinillo' },
   { id: '2', label: 'nutella' }
 ]);
-const newItem = ref('');
-const newItemHighPriority = ref(false);
 // Item Method
 const saveItem = () => {
   items.value.push({ id: items.value.length + 1, label: newItem.value });
   // Clean the input
   newItem.value = '';
 }
+
+const activateEdition = (activate) => {
+  editing.value = activate;
+}
+
+// Formulario
+const newItem = ref('');
+const newItemHighPriority = ref(false);
+const editing = ref(true);
+
+// Eventos
+
+
 </script>
 
 <template>
-  <h1>
-    <i class="material-icons shopping-cart-icon">local_mall</i>
-    {{ header }}
-  </h1>
-  <h1>
+  <div class="header">
+    <h1>
+      <i class="material-icons shopping-cart-icon">local_mall</i>
+      {{ header }}
+    </h1>
+    <button v-if="editing" class="btn" @click="activateEdition(false)">Cancelar</button>
+    <button v-else class="btn btn-primary" @click="activateEdition(true)">Agregar Articulo</button>
+  </div>
     <!-- Agrupando en un div las entradas -->
   <form
   class="add-item form"
+  v-if="editing"
   v-on:submit.prevent="saveItem">
     <!-- entrada de texto -->
     <input
@@ -48,10 +63,10 @@ const saveItem = () => {
       Save Item
     </button>
   </form>
-  </h1>
   <ul>
     <li v-for="item in items" :key="id"> ⭐ {{ item.label }} </li>
   </ul>
+  <p v-if="items.length === 0">🥀 NO HAY ELEMENTOS EN LA LISTA 🥀</p>
 </template>
 
 <style scoped>
