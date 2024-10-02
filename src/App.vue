@@ -3,6 +3,8 @@ import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import {ref} from 'vue';
 const header = ref('App lista  de compras')
+// items
+// Item-Model
 const items = ref([
   { id: '0', label: 'bolillos' },
   { id: '1', label: 'pepinillo' },
@@ -10,7 +12,12 @@ const items = ref([
 ]);
 const newItem = ref('');
 const newItemHighPriority = ref(false);
-const iceCreamFlavors = ref([]);
+// Item Method
+const saveItem = () => {
+  items.value.push({ id: items.value.length + 1, label: newItem.value });
+  // Clean the input
+  newItem.value = '';
+}
 </script>
 
 <template>
@@ -20,7 +27,9 @@ const iceCreamFlavors = ref([]);
   </h1>
   <h1>
     <!-- Agrupando en un div las entradas -->
-  <form v-on:submit.prevent="items.push({ id: items.length + 1, label: newItem })" class="add-item fomr">
+  <form
+  class="add-item form"
+  v-on:submit.prevent="saveItem">
     <!-- entrada de texto -->
     <input
       v-model.trim="newItem"
