@@ -6,9 +6,9 @@ const header = ref('App lista  de compras')
 // items
 // Item-Model
 const items = ref([
-  { id: '0', label: 'bolillos' },
-  { id: '1', label: 'pepinillo' },
-  { id: '2', label: 'nutella' }
+  { id: '0', label: 'bolillos', purchased: false, priority: true},
+  { id: '1', label: 'pepinillo', purchased: true, priority: true},
+  { id: '2', label: 'nutella', purchased: false, priority: false}
 ]);
 // Item Method
 const saveItem = () => {
@@ -72,7 +72,11 @@ const link = ref('https://www.google.com')
     </button>
   </form>
   <ul>
-    <li v-for="item in items" :key="id"> ⭐ {{ item.label }} </li>
+    <li 
+      v-for="{label, id, purchased, priority} in items"
+      :key="id"
+      class="amazing"
+      :class="{ strikeout: purchased, priority: priority}"> {{ priority ? "🔥" : "🛍️" }} {{ label }} </li>
   </ul>
   <p v-if="items.length === 0">🥀 NO HAY ELEMENTOS EN LA LISTA 🥀</p>
 </template>
