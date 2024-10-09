@@ -21,10 +21,16 @@ const activateEdition = (activate) => {
   editing.value = activate;
 }
 
+const validation = () => {
+  if (newItem.value == "")
+}
+
+
 // Formulario
 const newItem = ref('');
 const newItemHighPriority = ref(false);
 const editing = ref(true);
+const link = ref('https://www.google.com')
 
 // Eventos
 
@@ -41,7 +47,7 @@ const editing = ref(true);
     <button v-else class="btn btn-primary" @click="activateEdition(true)">Agregar Articulo</button>
   </div>
   <!-- Colocando un hyperlink -->
-   <a v-bind:href="'https://' + newItem" v-if="newItem = www.google.com" target="_blank">{{ newItem == "" ? "🔥 Link" : newItem }}</a>
+   <a v-bind:href="'https://' + newItem" v-if="validation" target="_blank">{{ newItem }}</a>
     <!-- Agrupando en un div las entradas -->
   <form
   class="add-item form"
