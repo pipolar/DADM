@@ -22,7 +22,8 @@ const activateEdition = (activate) => {
 }
 
 const validation = () => {
-  if (newItem.value == "")
+  if (newItem.value == "") {
+  }
 }
 
 
@@ -46,8 +47,6 @@ const link = ref('https://www.google.com')
     <button v-if="editing" class="btn" @click="activateEdition(false)">Cancelar</button>
     <button v-else class="btn btn-primary" @click="activateEdition(true)">Agregar Articulo</button>
   </div>
-  <!-- Colocando un hyperlink -->
-   <a v-bind:href="'https://' + newItem" v-if="validation" target="_blank">{{ newItem }}</a>
     <!-- Agrupando en un div las entradas -->
   <form
   class="add-item form"
@@ -66,6 +65,7 @@ const link = ref('https://www.google.com')
     </label>
     <!-- Boton -->
     <button
+      :disabled="newItem.length === 0"
       class="btn btn-primary"
     >
       Save Item
