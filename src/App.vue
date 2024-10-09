@@ -71,12 +71,23 @@ const link = ref('https://www.google.com')
       Save Item
     </button>
   </form>
+  <!-- Lista clase con objetos -->
   <ul>
     <li 
       v-for="{label, id, purchased, priority} in items"
       :key="id"
       class="amazing"
       :class="{ strikeout: purchased, priority: priority}"> {{ priority ? "🔥" : "🛍️" }} {{ label }} </li>
+  </ul>
+  <!-- Lista clase con arreglos -->
+  <ul>
+    <li 
+      v-for="{label, id, purchased, priority} in items"
+      :key="id"
+      class="['clase01', 'clase02']"
+      :class="[purchased ? 'strikeout' : '', priority ? 'priority' : '']">
+      {{ priority ? "🔥" : "🛍️" }} {{ label }}
+    </li>
   </ul>
   <p v-if="items.length === 0">🥀 NO HAY ELEMENTOS EN LA LISTA 🥀</p>
 </template>
