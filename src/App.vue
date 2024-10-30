@@ -81,12 +81,12 @@ const link = ref('https://www.google.com')
   </ul>
   <!-- Lista clase con arreglos -->
   <ul>
-    <li 
-      v-for="{label, id, purchased, priority} in items"
-      :key="id"
-      class="['clase01', 'clase02']"
-      :class="[purchased ? 'strikeout' : '', priority ? 'priority' : '']">
-      {{ priority ? "🔥" : "🛍️" }} {{ label }}
+    <li
+      v-for="{ id, label, purchased, priority } in items"
+      v-bind:key="id"
+      :class="{ strikeout: purchased, priority}"
+    >
+      ⚜ {{ label }}
     </li>
   </ul>
   <p v-if="items.length === 0">🥀 NO HAY ELEMENTOS EN LA LISTA 🥀</p>
