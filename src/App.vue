@@ -21,17 +21,18 @@ const activateEdition = (activate) => {
   editing.value = activate;
 }
 
-const validation = () => {
-  if (newItem.value == "") {
-  }
-}
+// Alternando estado de compra del item
+const togglePurchased = (item) => {
+  item.purchased = !item.purchased;
+};
+
+
 
 
 // Formulario
 const newItem = ref('');
 const newItemHighPriority = ref(false);
 const editing = ref(true);
-const link = ref('https://www.google.com')
 
 // Eventos
 
@@ -73,18 +74,11 @@ const link = ref('https://www.google.com')
   </form>
   <!-- Lista clase con objetos -->
   <ul>
-    <li 
-      v-for="{label, id, purchased, priority} in items"
-      :key="id"
-      class="amazing"
-      :class="{ strikeout: purchased, priority: priority}"> {{ priority ? "🔥" : "🛍️" }} {{ label }} </li>
-  </ul>
-  <!-- Lista clase con arreglos -->
-  <ul>
     <li
-      v-for="{ id, label, purchased, priority } in items"
+      v-for="({ id, label, purchased, priority }, index) in items"
+      @click="togglePurchased(items[index])"
       v-bind:key="id"
-      :class="{ strikeout: purchased, priority}"
+      :class="{ strikeout: purchased, priority: highPriority }"
     >
       ⚜ {{ label }}
     </li>
