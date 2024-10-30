@@ -74,14 +74,12 @@ const editing = ref(true);
   </form>
   <!-- Lista clase con objetos -->
   <ul>
-    <li
-      v-for="({ id, label, purchased, priority }, index) in items"
+    <li 
+      v-for="({label, id, purchased, priority}, index) in items"
       @click="togglePurchased(items[index])"
-      v-bind:key="id"
-      :class="{ strikeout: purchased, priority: highPriority }"
-    >
-      ⚜ {{ label }}
-    </li>
+      :key="id"
+      class="amazing"
+      :class="{ strikeout: purchased, priority: priority}"> ⚜ {{ label }} </li>
   </ul>
   <p v-if="items.length === 0">🥀 NO HAY ELEMENTOS EN LA LISTA 🥀</p>
 </template>
