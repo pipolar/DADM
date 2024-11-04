@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 // Modo edición
 const editing = ref(false);
 // Funcion que alterna el valor de la variable editing
@@ -35,6 +35,18 @@ const saveItem = () => {
 const togglePurchased = (item) => {
   item.purchased = !item.purchased;
 };
+
+// Propiedad computada
+const characterCount = computed(() => {
+  return newItem.value.length;
+});
+
+// Creando propiedad computada que invierte items de la lista
+const reversedItems = computed(() => {
+  return [...items.value].reverse();
+});
+
+
 </script>
 
 <template>
@@ -57,10 +69,15 @@ const togglePurchased = (item) => {
       class="btn btn-primary">
       Salvar Articulo
     </button>
+
+    	<!-- Contador -->
+  <p class="counter">
+    {{ characterCount }} / 200
+  </p>
   </form>
   <!-- Lista -->
   <ul>
-    <li v-for="({ id, label, purchased, highPriority }, index) in items" 
+    <li v-for="({ id, label, purchased, highPriority }, index) in reversedItems" 
       :class="{strikeout: purchased, priority: highPriority}"
       @click="togglePurchased(items[index])"
       v-bind:key="id">
