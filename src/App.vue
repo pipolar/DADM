@@ -39,7 +39,7 @@ const togglePurchased = (item) => {
 
 <template>
   <div class="header">
-    <h1> <i class="material-icons shopping-cart-icon">local_mall</i> {{ header }}</h1>
+    <h1> <i class="material-icons shopping-cart-icon"></i> {{ header }}</h1>
     <button v-if="editing" @click="doEdit(false)" class="btn">Cancel</button>
     <button v-else @click="doEdit(true)" class="btn btn-primary">Add Item</button>
   </div>
