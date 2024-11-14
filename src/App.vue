@@ -1,5 +1,5 @@
 <script setup>
-import planItem from './components/PlanPickerItem.vue';
+import PlanPicker from './components/PlanPicker.vue';
 </script>
 
 <template>
@@ -17,11 +17,9 @@ import planItem from './components/PlanPickerItem.vue';
       Viajamos por el mundo para encontrar el mejor café de origen único para ti
     </h2>
 
-    <div class="plans">
-      <planItem></planItem>
-      <planItem></planItem>
-      <planItem></planItem>
-    </div>
+    <!-- TODO INCLUDE PLAN-PICKER COMPONENT -->
+    <PlanPicker />
+
   </div>
 </template>
 
