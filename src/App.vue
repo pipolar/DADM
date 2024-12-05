@@ -5,7 +5,9 @@ import fancyButton from './components/FancyButton.vue';
 <template>
   <div class="content">
     <fancyButton>
-      Hazle Click
+      <template #icon="slotProps">
+        {{ slotProps.hover ? "⭐" : "🌟" }}
+      </template>
     </fancyButton>
   </div>
 </template>
