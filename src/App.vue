@@ -5,6 +5,7 @@ import fancyButton from './components/FancyButton.vue';
 <template>
   <div class="content">
     <fancyButton>
+      Enviar
     </fancyButton>
   </div>
 </template>

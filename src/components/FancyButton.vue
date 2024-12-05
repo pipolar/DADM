@@ -1,5 +1,7 @@
 <template>
-    <button>Hazme Clic!</button>
+    <button>
+        <slot></slot> 
+    </button>
 </template>
   
 <script setup>
@@ -8,5 +10,15 @@
 <style scoped>
 html {
 font-family: sans-serif;
+}
+
+.content{
+  text-align: center;
+}
+
+button{
+  width: 12rem;
+  margin: 30px auto;
+  font-size: 2rem;
 }
 </style>
